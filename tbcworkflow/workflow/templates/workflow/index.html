@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Project{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <tr>
+        <td>项目编号</td>
+        <td>样品编号</td>
+        <td>单位</td>
+        <td>物种</td>
+        <td>合同日期</td>
+    </tr>
+    {% for project in projects %}
+    <tr>
+        <td><a href="{{ project.id }}">{{ project.projectID }}</a></td>
+        <td>{{ project.sampleID }}</td>
+        <td>{{ project.enterprise }}</td>
+        <td>{{ project.species }}</td>
+        <td>{{ project.expire }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+

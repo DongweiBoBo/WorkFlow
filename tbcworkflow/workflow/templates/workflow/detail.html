@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}{{ project.projectID }}{% endblock %}
+
+{% block content %}
+<h1>{{ project.projectID }}</h1>
+<h4>样品</h4>
+<table class="table table-striped">
+    <tr>
+        <td>样品名称</td>
+        <td>样品类型</td>
+        <td>样品数量</td>
+        <td>送样单位</td>
+        <td>送样人</td>
+        <td>收样人</td>
+        <td>收样日期</td>
+    </tr>
+    {% for sample in samples %}
+    <tr>
+        <td>{{ sample.sampleName }}</td>
+        <td>{{ sample.sampleType }}</td>
+        <td>{{ sample.sampleNumber }}</td>
+        <td>{{ sample.deliverEnterprise }}</td>
+        <td>{{ sample.deliverPerson }}</td>
+        <td>{{ sample.reveivePerson }}</td>
+        <td>{{ sample.receiveDate }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<h4>测序</h4>
+<table class="table table-striped">
+    <tr>
+        <td>测序类型</td>
+        <td>测序量</td>
+        <td>测序负责人</td>
+        <td>提取</td>
+        <td>质检</td>
+        <td>纯化</td>
+        <td>打断</td>
+        <td>建库</td>
+        <td>BP</td>
+        <td>上机</td>
+        <td>说明</td>
+    </tr>
+    {% for sequence in sequences %}
+    <tr>
+        <td>{{ sequence.sequenceType }}</td>
+        <td>{{ sequence.sequenceBases }}</td>
+        <td>{{ sequence.sequencePerson }}</td>
+        <td>{{ sequence.sequenceExtract }}</td>
+        <td>{{ sequence.sequenceQC }}</td>
+        <td>{{ sequence.sequencePurify }}</td>
+        <td>{{ sequence.sequenceBreak }}</td>
+        <td>{{ sequence.sequenceLib }}</td>
+        <td>{{ sequence.sequenceBP }}</td>
+        <td>{{ sequence.sequenceRun }}</td>
+        <td>{{ sequence.sequenceText }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<h4>组装</h4>
+<table class="table table-striped">
+    <tr>
+        <td>Survey</td>
+        <td>Contig组装</td>
+        <td>Hic组装</td>
+        <td>说明</td>
+    </tr>
+    {% for assembly in assemblys %}
+    <tr>
+        <td>{{ assembly.assemblySurvey }}</td>
+        <td>{{ assembly.assemblyContig }}</td>
+        <td>{{ assembly.assemblyHic }}</td>
+        <td>{{ assembly.assemblyText }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<h4>模型</h4>
+<table class="table table-striped">
+    <tr>
+        <td>RepeatMasker</td>
+    </tr>
+    {% for genemodel in genemodels %}
+    <tr>
+        <td>{{ genemodel.genemodelRepeat }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<h4>个性化分析</h4>
+<table class="table table-striped">
+    <tr>
+        <td>树</td>
+    </tr>
+    {% for analyse in analyses %}
+    <tr>
+        <td>{{ analyse.analyseTree }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
